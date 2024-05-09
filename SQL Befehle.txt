@@ -1,0 +1,35 @@
+
+CREATE TABLE movie (movieid int NOT NULL,
+title varchar(40),
+mpaa_rating varchar(30),
+budget int(20),
+gross int(20),
+release_date date,
+genre varchar(30),
+runtime int(20),
+rating float(20, 1),
+rating_count int(25),
+summary text(500),
+PRIMARY KEY (movieid));
+
+CREATE TABLE kharakter (
+movieid int NOT NULL,
+actorid int NOT NULL,
+character_name varchar(80),
+credit_order int(20),
+pay int(20),
+screentime time,
+CONSTRAINT fk_movieid FOREIGN KEY (movieid) REFERENCES movie(movieid),
+CONSTRAINT fk_actorid FOREIGN KEY (actorid) REFERENCES actor(actorid));
+
+CREATE TABLE actor (actorid int NOT NULL,
+name varchar(40),
+date_of_birth date,
+birth_city varchar(40),
+birth_country varchar(40),
+height_inches float(20, 1),
+biography text(500),
+gender varchar(20),
+ethnicity varchar(30),
+networth int,
+PRIMARY KEY (actorid));
